@@ -4,6 +4,7 @@ import (
 	"encoding/binary"
 	"fmt"
 	"golang.org/x/crypto/sha3"
+	"time"
 )
 
 const (
@@ -158,30 +159,65 @@ func squeeze(s *state, d int) []byte {
 func sha_3(message []byte, d int) []byte {
 	var s state
 
-	// Pad the message
 	message = pad(message, 136)
 
-	// Absorb
 	absorb(&s, message)
 
-	// Squeeze
 	return squeeze(&s, d)
 }
 
 func main() {
-	message := []byte("Hello!")
-	hash1 := sha_3(message, 256)
+	message1 := []byte("Hello, SHA-3!")
+	startTime := time.Now()
+	hash1 := sha_3(message1, 256)
+	elapsedTime := time.Since(startTime)
 	fmt.Printf("My SHA-3: %x\n", hash1)
+	fmt.Println("The execution time of my algorithm: ", elapsedTime)
 
-	hash_1 := sha3.Sum256(message)
+	startTime1 := time.Now()
+	hash_1 := sha3.Sum256(message1)
+	elapsedTime1 := time.Since(startTime1)
 	fmt.Printf("Library SHA-3: %x\n", hash_1)
+	fmt.Println("Runtime of the library algorithm: ", elapsedTime1)
 
-	message1 := []byte{0x47, 0xd7, 7, 0x99, 0xe8, 5, 0x99, 0xd9,
-		0x4c, 0x27, 0x3e, 0x81, 0x76, 0x6a, 0x3a, 0x8b,
-		0x6c, 7, 0x78, 0xf6, 0x5, 0x5a, 0xd2, 0xf4}
-	hash2 := sha_3(message1, 256)
-	fmt.Printf("My SHA-3: %x\n", hash2)
+	message2 := []byte("Testing different input data.")
+	startTime2 := time.Now()
+	hash2 := sha_3(message2, 256)
+	elapsedTime2 := time.Since(startTime2)
+	fmt.Printf("\nMy SHA-3: %x\n", hash2)
+	fmt.Println("The execution time of my algorithm: ", elapsedTime2)
 
-	hash_2 := sha3.Sum256(message1)
+	startTime3 := time.Now()
+	hash_2 := sha3.Sum256(message2)
+	elapsedTime3 := time.Since(startTime3)
 	fmt.Printf("Library SHA-3: %x\n", hash_2)
+	fmt.Println("Runtime of the library algorithm: ", elapsedTime3)
+
+	message3 := []byte{0x47, 0xd7, 0x07, 0x99, 0xe8, 0x05, 0x99, 0xd9,
+		0x4c, 0x27, 0x3e, 0x81, 0x76, 0x6a, 0x3a, 0x8b,
+		0x6c, 0x07, 0x78, 0xf6, 0x05, 0x5a, 0xd2, 0xf4}
+	startTime4 := time.Now()
+	hash3 := sha_3(message3, 256)
+	elapsedTime4 := time.Since(startTime4)
+	fmt.Printf("\nMy SHA-3: %x\n", hash3)
+	fmt.Println("The execution time of my algorithm: ", elapsedTime4)
+
+	startTime5 := time.Now()
+	hash_3 := sha3.Sum256(message3)
+	elapsedTime5 := time.Since(startTime5)
+	fmt.Printf("Library SHA-3: %x\n", hash_3)
+	fmt.Println("Runtime of the library algorithm: ", elapsedTime5)
+
+	message4 := []byte("Another message for comparison.")
+	startTime6 := time.Now()
+	hash4 := sha_3(message4, 256)
+	elapsedTime6 := time.Since(startTime6)
+	fmt.Printf("\nMy SHA-3: %x\n", hash4)
+	fmt.Println("The execution time of my algorithm: ", elapsedTime6)
+
+	startTime7 := time.Now()
+	hash_4 := sha3.Sum256(message4)
+	elapsedTime7 := time.Since(startTime7)
+	fmt.Printf("Library SHA-3: %x\n", hash_4)
+	fmt.Println("Runtime of the library algorithm: ", elapsedTime7)
 }
