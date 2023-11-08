@@ -14,14 +14,14 @@
 Метою цього етапу є оптимізація вашої реалізації алгоритму гешування для зменшення обсягу памʼяті і процесорного часу, що використовуються для обчислення геш-значення від повідомлення певної довжини. Для виконання цього етапу зробіть замір часу витраченого на гешування певного повідомлення вашою функцією і замір часу гешування функцією з готової бібліотеки. Результати замірів порівняйте і зробіть висновок щодо ефективності вашої реалізації.
 Обсяг використаної памʼяті можна виміряти додатковими інструментами моніторингу ПЗ або вашої ОС. Усі результати порівняння можна викласти у файлі readme.md вашого репозиторію.
 
-#Нажаль у мене не співпадють геші і я не розумію чому.
+# Нажаль у мене не співпадють геші і я не розумію чому.
 Я спробував реалізувати алгоритм SHA-3, але щось я зробив не так, бо мої геші не співпадають з бібліотечними. Я використав багато ресурсів, щоб виправити це, але не вийшло. Зато я спробував.
 Також я зробив тести порівняння і замір часу виконання.
-#Якщо трохи докопатись до слів завдання, то теоретично я зробив завдання правильно, бо воно звучить як "Напишіть ВЛАСНУ реалізацію алгоритму гешування SHA-1 або SHA-3")
+# Якщо трохи докопатись до слів завдання, то теоретично я зробив завдання правильно, бо воно звучить як "Напишіть ВЛАСНУ реалізацію алгоритму гешування SHA-1 або SHA-3")
 
 Я реалізовував читаючи цей алгоритм.
 
-#Алгоритм SHA-3:
+# Алгоритм SHA-3:
 Design
 SHA-3 uses the sponge construction, in which data is "absorbed" into the sponge, then the result is "squeezed" out. In the absorbing phase, message blocks are XORed into a subset of the state, which is then transformed as a whole using a permutation function f. (Calling f a permutation may be confusing. It is technically a permutation of the state space, thus a permutation of a set with 
 2^1600≈4.4⋅10^481 elements, but it does more than merely permute the bits of the state vector.) In the "squeeze" phase, output blocks are read from the same subset of the state, alternated with the state transformation function f. The size of the part of the state that is written and read is called the "rate" (denoted r), and the size of the part that is untouched by input/output is called the "capacity" (denoted c). The capacity determines the security of the scheme. The maximum security level is half the capacity.
