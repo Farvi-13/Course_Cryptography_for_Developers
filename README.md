@@ -26,11 +26,11 @@ C(i) = (M(i)^e) mod n;
 # Реалізація
 В програмі реалізований алгоритм RSA.
 Для цього було реалізовані 4 функції:
-KeyGen() (PrivateKey, PublicKey) \n
-Encrypt(message *big.Int, pubKey PublicKey)
-Decrypt(ciphertext *big.Int, privKey PrivateKey)
-TextToBigInt(text string)
-Verify(message *big.Int, decryptedMessage *big.Int)
+KeyGen() (PrivateKey, PublicKey);
+Encrypt(message *big.Int, pubKey PublicKey);
+Decrypt(ciphertext *big.Int, privKey PrivateKey);
+TextToBigInt(text string);
+Verify(message *big.Int, decryptedMessage *big.Int).
 
 А в функції main написаний тест, для перевірки коректної роботи
 
